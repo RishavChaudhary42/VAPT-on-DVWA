@@ -1,0 +1,44 @@
+Reconnaissance:-
+To perform this step we setup DVWA → Create/Reset Database → Login → set the DVWA security to low.
+This is first step and refers to information gathering about IP addresses and host of thenetwork,open ports and services. we use Nmap , a pre built tool in kali linux. We use
+following command to start Nmap and to gather information about application:-
+ nmap -sS - sV -T4 <host address of application> and whatweb http://<ip address>/dvwa
+Scanning:-
+For scanning purpose we use nikto and dirb tools and for HTTP service scanning we use metasploit, a testing frame work.
+We use following commands:-
+nikto -h http://127.0.0.1/dvwa
+dirb http://127.0.0.1/dvwa
+SQL Injection:-
+SQL Injection (SQLi) is a type of an injection attack that makes it possible toexecute malicious SQL statements. Attackers can go around authentication and authorization of a web page or web application and retrieve the content of the entire
+SQL database. They can also use SQL Injection to add, modify, and delete records in the database.
+Steps:-
+Go to the SQL Injection module.
+Enter payload: 1' OR '1'='1 in the ID field.
+Click "Submit"
+XSS Reflected:-
+Reflected XSS is the simplest variety of cross-site scripting. It arises when an application receives data in an HTTP request and includes that data within the immediate response in
+an unsafe way.
+Steps:-
+Enter payload(<script>alert('XSS')</script>) into input
+box.
+Click Submit.
+Stored XSS:-
+Stored XSS arises when an application receives data from an untrusted source and includes that data within its later HTTP responses in an unsafe way. 
+Input some unique field in the form field and submit it.
+Open page source by pressing CTRL+U and search the unique string in the page source
+Use CTRL+F to find the unique string. If the unique string reflects back in the browser screen or in the page source then the site may be vulnerable to stored XSS.
+At last, fire the payload of XSS and submit it to get further response in the browser.
+If the site is vulnerable, we will get an alert box.
+Command Injection:-
+Command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible
+when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.
+Steps:-
+Enter payload(127.0.0.1 && ls or 127.0.0.1 && whoami) into IP field.
+Click Submit.
+HTML Injection:-
+HTML injection is a vulnerability that occurs when an attacker is able to insert arbitrary HTML code into a web page. This happens because the application fails to properly sanitize
+user input, allowing hackers to manipulate the way a web page is displayed to users.
+Steps:-
+Submit comment with HTML content payload is <b>Bold Text</b>
+View result.
+
